@@ -1,0 +1,23 @@
+[user]
+  name = Yuya Matsumura
+  email = mattu.yuya@gmail.com
+[color]
+  ui = auto
+[color "diff"]
+  old = red strike
+  new = green italic
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[alias]
+  co = checkout
+  st = status
+  ci = commit
+  di = diff
+  br = branch
+  ls = ls-files
+[core]
+  editor = /usr/local/bin/vim
+[github]
+  user = ymattu

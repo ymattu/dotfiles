@@ -1,0 +1,139 @@
+import os
+from collections import Counter
+from prompt_toolkit.keys import Keys
+
+os.environ['EDITOR'] = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+os.environ['VISUAL'] = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+
+$DIR_HIST_PATH = "/Users/yuya/.dirhist"
+
+$PATH.append("/usr/local/bin")
+$PATH.append("~/.fzf/bin")
+$PATH.append("/usr/local/texlive/2017/bin/x86_64-darwin")
+
+
+"""
+基本設定
+"""
+# カラーテーマ
+$XONSH_COLOR_STYLE = "native"
+# tabではなく空白4つ
+$INDENT = "    "
+# 補完時に大小区別しない
+$CASE_SENSITIVE_COMPLETIONS = False
+# 括弧を補完
+$XONSH_AUTOPAIR = True
+# ディレクトリ名を入力すればcdできる
+$AUTO_CD = True
+# エラー全て吐くように
+$XONSH_SHOW_TRACEBACK = True
+# プロンプトの設定タイムアウトのメッセージ抑制
+$SUPPRESS_BRANCH_TIMEOUT_MESSAGE = True
+
+# 見た目ウザかったら変更する
+# 参考:http://xon.sh/tutorial.html#customizing-the-prompt
+# 参考:https://github.com/santagada/xontrib-powerline
+$PL_PROMPT = "short_cwd>branch"
+$PL_RPROMPT = "!"
+$PL_TOOLBAR = "who>time"
+# lsコマンドの結果の見た目
+$LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30"
+# パワーラインの読み込み
+xontrib load powerline
+
+# エイリアス
+aliases["lt"] = "ls -ltr"
+aliases["l"] = "ls -ltr"
+aliases["la"] = "ls -la"
+aliases["ll"] = "ls -l"
+aliases["es"] = "exec $SHELL"
+aliases["emacsclient"] = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
+aliases["rc"] = "emacsclient ~/.xonshrc"
+aliases["cp"] = "cp -i"
+aliases["rm"] = "rm -i"
+aliases["jn"] = "jupyter notebook"
+aliases["jl"] = "jupyter lab"
+aliases["fish"] = "/usr/local/bin/fish"
+aliases["julia"] = "/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia"
+
+import json
+from collections import OrderedDict
+from operator import itemgetter
+
+
+def get_history(session_history=None, return_list=False):
+    hist_dir = __xonsh_env__['XONSH_DATA_DIR']
+
+    files = [ os.path.join(hist_dir,f) for f in os.listdir(hist_dir)
+              if f.startswith('xonsh-') and f.endswith('.json') ]
+    file_hist = [ json.load(open(f))['data']['cmds'] for f in files ]
+    cmds = [ ( c['inp'].replace('\n', ''), c['ts'][0] )
+                 for cmds in file_hist for c in cmds if c]
+    cmds.sort(key=itemgetter(1))
+    cmds = [ c[0] for c in cmds[::-1] ]
+    if session_history:
+        cmds.extend(session_history)
+    # dedupe
+    zip_with_dummy = list(zip(cmds, [0] * len(cmds)))[::-1]
+    cmds = list(OrderedDict(zip_with_dummy).keys())[::-1]
+
+    if return_list:
+        return cmds
+    else:
+        return '\n'.join(cmds)
+
+
+from prompt_toolkit.keys import Keys
+from prompt_toolkit.filters import (Condition, IsMultiline, HasSelection,
+                                    EmacsInsertMode, ViInsertMode)
+
+
+@events.on_ptk_create
+def custom_keybindings(bindings, **kw):
+    handler = bindings.registry.add_binding
+    insert_mode = EmacsInsertMode()
+    # insert_mode = ViInsertMode()
+
+    @handler(Keys.ControlX, Keys.ControlE, filter=insert_mode)
+    def edit_in_editor(event):
+        event.current_buffer.tempfile_suffix = '.py'
+        event.current_buffer.open_in_editor(event.cli)
+
+    @handler(Keys.ControlR, filter=insert_mode)
+    def select_history(event):
+        sess_history = $(history).split('\n')
+        hist = get_history(sess_history)
+        selected = $(echo @(hist) | fzf)
+        event.current_buffer.insert_text(selected.strip())
+
+import xonsh.tools
+import backtrace
+import sys
+
+# backtraceパッケージの_flush()をOverride
+# 元コード : https://github.com/nir0s/backtrace/blob/f2c8683ec53e4fa48ea8c99c196b201bf22fda3e/backtrace.py#L36
+def __flush(message):
+    st = message + '\n'
+    sys.stderr.buffer.write(st.encode(encoding="utf-8"))
+backtrace._flush=__flush
+
+# xonshのprint_exception()をOverride
+# 元コード : https://github.com/xonsh/xonsh/blob/230f77b2bc64cbc3e04837377252793f5d09b9ba/xonsh/tools.py#L798
+def _print_exception(msg=None):
+    tpe, v, tb = sys.exc_info()
+    backtrace.hook(tb=tb, tpe=tpe, value=v)
+    if msg:
+        msg = msg if msg.endswith('\n') else msg + '\n'
+        sys.stderr.write(msg)
+xonsh.tools.print_exception = _print_exception
+
+from colorama import init, Fore, Style
+STYLES = {
+    'backtrace': Fore.YELLOW + '{0}',
+    'error': Fore.RED + Style.BRIGHT + '{0}',
+    'line': Fore.RED + Style.BRIGHT + '{0}',
+    'module': '{0}',
+    'context': Style.BRIGHT + Fore.GREEN + '{0}',
+    'call': Fore.RED + '--> ' + Fore.YELLOW + Style.BRIGHT + '{0}',
+}
+backtrace.hook(reverse=True, strip_path=True, styles=STYLES)

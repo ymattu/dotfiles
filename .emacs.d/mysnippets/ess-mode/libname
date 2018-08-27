@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: libname
+# key: libname
+# --
+libname $1 '$2';
