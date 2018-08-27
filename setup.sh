@@ -35,8 +35,7 @@ main() {
     download_dotfiles
 
     # . $DOTFILES_PATH/setup/symbolic_links.sh
-    # . $DOTFILES_PATH/setup/install/main.sh
-    # . $DOTFILES_PATH/setup/preferences/main.sh
+    . $DOTFILES_PATH/setup/install/main.sh
 
     # change_login_shell
     # reboot_system
