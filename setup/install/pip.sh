@@ -17,4 +17,4 @@ git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-vi
 echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 
 # packages
-pip install grip vertualenv
+pip install grip vertualenv xonsh

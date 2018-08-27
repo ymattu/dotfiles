@@ -30,6 +30,33 @@ download_dotfiles() {
     fi
 }
 
+change_login_shell() {
+    print_title "Xonsh"
+    loginshell="$HOME/.pyenv/shims/xonsh"
+    if [ $SHELL == $loginshell ]; then
+        print_warning "Login shell: already xonsh"
+    else
+        print_message "Changing login shell..."
+        grep "$loginshell" /etc/shells &>/dev/null || sudo sh -c "echo $loginshell >> /etc/shells"
+        chsh -s $loginshell
+        print_success "successfully changed to xonsh"
+    fi
+}
+
+reboot_system() {
+    print_title "Reboot System"
+    printf "Do you want to reboot the system? (y/n) "
+    read
+    if [[ $REPLY =~ ^[Yy]$ || $REPLY == '' ]]; then
+        sudo shutdown -r now &> /dev/null
+    fi
+}
+
+reload_shell() {
+    printf "\n\n"
+    exec $(which xonsh)
+}
+
 main() {
     check_os
     download_dotfiles
@@ -37,9 +64,9 @@ main() {
     . $DOTFILES_PATH/setup/symbolic_links.sh
     . $DOTFILES_PATH/setup/install/main.sh
 
-    # change_login_shell
-    # reboot_system
-    # reload_shell
+    change_login_shell
+    reboot_system
+    reload_shell
 }
 
 main
