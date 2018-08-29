@@ -10,7 +10,6 @@ install_rbenv(){
         print_warning "rbenv: already installed"
     else
         print_message "Installing rbenv..."
-        brew install rbenv ruby-build
         echo 'eval "$(rbenv init -)"' >> ~/.bashrc
         source ~/.bashrc
         rbenv install 2.4.1

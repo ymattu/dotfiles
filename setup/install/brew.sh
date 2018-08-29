@@ -31,8 +31,8 @@ install_packages() {
     print_title "Homebrew Packages"
     print_message "Installing packages..."
     packages=(
-        autoconf buku coreutils git gitbucket go scala gtk+3 hub \
-        imagemagick lua mongodb mysql node openssl peco postgresql \
+        go scala gtk+3 hub \
+        imagemagick lua node openssl postgresql \
         python3 pwgen rbenv readline ruby-build \
         sbt sqlite tig tmux tree vim wget zsh fish \
         poppler pdftools cmigemo node gtags gdrive
