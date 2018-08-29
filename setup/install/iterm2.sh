@@ -21,6 +21,9 @@ setting_iterm2() {
     readonly DIR_TEMP="${HOME}/temp"
     [ ! -e ${DIR_TEMP} ] && mkdir ${DIR_TEMP}
 
+    readonly ITERM_DIR="${HOME}/Downloads/item_setting"
+    [ ! -e ${ITERM_DIR} ] && mkdir ${ITERM_DIR}
+
     # clear
     if [ -e ${HOME}/Library/com.googlecode.iterm2.plist ]; then
         mv ${HOME}/Library/com.googlecode.iterm2.plist \
@@ -34,7 +37,7 @@ setting_iterm2() {
          -o "${DIR_TEMP}/$(basename $url_is)"
     ## 持ってく
     cp -f ${DIR_TEMP}/com.googlecode.iterm2.plist \
-       ${HOME}/Library/Preferences/
+       ${ITERM_DIR}
 
     # 反映
     defaults read com.googlecode.iterm2 >/dev/null
