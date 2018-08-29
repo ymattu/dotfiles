@@ -36,7 +36,7 @@ install_packages() {
         imagemagick lua mongodb mysql node openssl peco postgresql \
         python3 pwgen rbenv readline ruby-build \
         sbt sqlite tig tmux tree vim wget zsh fish \
-        poppler pdftools cmigemo node gtags
+        poppler pdftools cmigemo node gtags gdrive
     )
     for package in "${packages[@]}"; do
         if brew list "$package" > /dev/null 2>&1; then
