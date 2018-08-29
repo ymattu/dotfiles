@@ -6,3 +6,5 @@
 . setup/install/node.sh
 . setup/install/gem.sh
 . setup/install/pip.sh
+. setup/install/iterm2.sh
+
