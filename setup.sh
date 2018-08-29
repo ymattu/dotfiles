@@ -17,6 +17,7 @@ check_os() {
 download_dotfiles() {
     print_title "Download dotfiles"
     if [ -d $DOTFILES_PATH ]; then
+        cd dotfiles && git pull
         print_warning "dotfiles: already exists"
     else
         print_message "Downloading dotfiles..."

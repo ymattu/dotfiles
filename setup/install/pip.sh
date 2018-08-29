@@ -14,6 +14,7 @@ install_pyenv(){
         echo "export PYENV_ROOT=$HOME/.pyenv" >> ~/.bashrc
         echo "export PATH=$PYENV_ROOT/bin:$PATH" >> ~/.bashrc
         echo 'eval "$(pyenv init -)"' >> ~/.bashrc
+        source ~/.bashrc
         pyenv install 3.6.0
         pyenv install anaconda3-5.0.1
         pyenv global anaconda3-5.0.1
