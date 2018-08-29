@@ -1,7 +1,10 @@
 #!bin/bash
 
+# dotfiles path
+DOTFILES_PATH="$HOME/dotfiles"
+
 # Load utils
-. setup/utils.sh
+. $DOTFILES_PATH/setup/utils.sh
 
 print_title "node"
 
