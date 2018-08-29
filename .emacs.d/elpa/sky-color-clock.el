@@ -125,6 +125,7 @@ otherwise result may be broken."
 (defun sky-color-clock--update-weather ()
   "Fetch current weather via openweathermap API and update
 `sky-color-clock--openweathermap-cache'."
+  (interactive)
   (url-retrieve
    (format "http://api.openweathermap.org/data/2.5/weather?id=%s&appid=%s"
            sky-color-clock--openweathermap-city-id
@@ -242,7 +243,7 @@ saturate according to CLOUDINESS. CLOUDINESS can be a number from
 (defvar sky-color-clock--temperature-color-gradient
   (sky-color-clock--make-gradient
    ;; -10             15                 40
-   '(263 . "#00a1ff") '(288 . "#ffffff") '(313 . "#ffa100")))
+   '(263 . "#00a1ff") '(288 . "#ffffff") '(313 . "#FF4000")))
 
 (defun sky-color-clock--temperature-indicator (basecolor &optional temperature)
   (if (null temperature) ""
