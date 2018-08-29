@@ -11,9 +11,9 @@ print_title "gdrive"
 gdrivedir=$HOME/.gdrive
 
 if [ -e $gdrivedir ]; then
-    print_success "gdrive is already setupped."
+    print_warning "gdrive: already setupped."
 else
     gdrive list
-    print_success "gdrive was successfully setupped"
+    print_success "gdrive: was successfully setupped"
 fi
 

@@ -3,6 +3,40 @@
 # Load utils
 . setup/utils.sh
 
-print_title "gem"
+install_rbenv(){
+    print_title "rbenv"
 
-gem install rcodetools rdefs google-ime-skk
+    if type rbenv > /dev/null 2>&1; then
+        print_warning "rbenv: already installed"
+    else
+        print_message "Installing rbenv..."
+        brew install rbenv ruby-build
+        echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+        source ~/.bashrc
+        rbenv install 2.4.1
+        rbenv global 2.4.1
+        print_success "successfully installed"
+    fi
+}
+
+install_packages() {
+    print_message "Installing packages"
+    packages=(rcodetools rdefs google-ime-skk)
+
+    for package in "${packages[@]}"; do
+        if gem list "$package" > /dev/null 2>&1; then
+            print_warning "$package: already installed"
+        elif gem install $package > /dev/null 2>&1; then
+            print_success "$package: successfully installed"
+        else
+            print_error "$package: unsuccessfully installed"
+        fi
+    done
+}
+
+main() {
+    install_rbenv
+    install_packages
+}
+
+main
