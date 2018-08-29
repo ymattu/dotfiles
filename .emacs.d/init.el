@@ -680,7 +680,7 @@
 ;; 下のならウィンドウを分割しない
 (defun init.el ()
   (interactive)
-  (find-file "~/.emacs.d/init.el"))
+  (find-file "~/dotfiles/.emacs.d/init.el"))
 ;; (global-set-key (kbd "C-c C-e") 'init.el)
 (evil-leader/set-key "e" 'init.el)
 
