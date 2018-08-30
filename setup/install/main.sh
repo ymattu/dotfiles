@@ -8,6 +8,7 @@
 . setup/install/node.sh
 . setup/install/gem.sh
 . setup/install/pip.sh
+. setup/install/java.sh
 . setup/install/R.sh
 . setup/install/iterm2.sh
 
