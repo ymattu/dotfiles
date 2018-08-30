@@ -9,10 +9,11 @@ DOTFILES_PATH="$HOME/dotfiles"
 print_title "Emacs"
 
 install_emacs() {
+    print_message "Checking if Emacs.app is installed"
     emacsfile=/Applications/Emacs.app
 
     if [ -e $emacsfile ]; then
-        print_warning "Emacs.app: already exists."
+        print_warning "Emacs.app: already exists"
     else
         print_message "Installing Emacs"
         download_url=https://github.com/vigou3/emacs-modified-macos/releases/download/v26.1-2-modified-1/Emacs-26.1-2-modified-1.dmg
@@ -23,7 +24,7 @@ install_emacs() {
         sudo ditto "$mount_dir/Emacs.app" "/Applications/Emacs.app"
         hdiutil detach "$mount_dir"
         rm $dmg_file
-        print_success "Emacs: successfully installed."
+        print_success "Emacs.app: successfully installed"
     fi
 }
 
@@ -33,7 +34,7 @@ setup_emacs() {
     specdir=$HOME/.emacs.d/spec
 
     if [ -e $specdir ]; then
-        print_warning "$specdir : already exists."
+        print_warning "$specdir : already exists"
     else
         x=$(gdrive list | grep spec | awk '{print $1}')
         gdrive download $x --recursive

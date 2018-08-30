@@ -1,7 +1,6 @@
 #!/bin/bash
 
 . setup/install/xcode.sh
-. setup/install/brew.sh
 . setup/install/emacs.sh
 . setup/install/rust.sh
 . setup/install/node.sh

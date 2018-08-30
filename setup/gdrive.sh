@@ -8,12 +8,32 @@ DOTFILES_PATH="$HOME/dotfiles"
 
 print_title "gdrive"
 
-gdrivedir=$HOME/.gdrive
+check_gdrive() {
+    print_message "Checking if gdrive is installed"
+    package=gdrive
+    if brew list $package > /dev/null 2>&1; then
+        print_warning "$package: already installed"
+    elif brew install $package > /dev/null 2>&1; then
+        print_success "$package: successfully installed"
+    else
+        print_error "$package: unsuccessfully installed"
+    fi
+}
 
-if [ -e $gdrivedir ]; then
-    print_warning "gdrive: already setupped."
-else
-    gdrive list
-    print_success "gdrive: was successfully setupped"
-fi
+setup_gdrive() {
+    print_message "Setup gdrive"
+    gdrivedir=$HOME/.gdrive
+    if [ -e $gdrivedir ]; then
+        print_warning "gdrive: already setupped"
+    else
+        gdrive list
+        print_success "gdrive: was successfully setupped"
+    fi
+}
 
+main() {
+    check_gdrive
+    setup_gdrive
+}
+
+main
