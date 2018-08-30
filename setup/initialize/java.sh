@@ -6,13 +6,13 @@ DOTFILES_PATH="$HOME/dotfiles"
 # Load utils
 . $DOTFILES_PATH/setup/utils.sh
 
-print_title "Java"
 
 install_java() {
+    print_title "Java"
     if which java >/dev/null 2>&1; then
-        print_warning "Java is already installed"
+        print_warning "Java: already installed"
     else
-        print_message "Installing Java"
+        print_message "Installing Java..."
         download_url=http://javadl.sun.com/webapps/download/AutoDL?BundleId=105219
         dmg_file=jre.dmg
 

@@ -28,7 +28,7 @@ install_pyenv(){
 }
 
 install_packages() {
-    print_message "Installing packages"
+    print_message "Installing packages..."
     packages=(grip vertualenv xonsh backtrace xontrib-powerline)
 
     for package in "${packages[@]}"; do

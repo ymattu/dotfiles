@@ -6,10 +6,9 @@ DOTFILES_PATH="$HOME/dotfiles"
 # Load utils
 . $DOTFILES_PATH/setup/utils.sh
 
-print_title "gdrive"
 
 check_gdrive() {
-    print_message "Checking if gdrive is installed"
+    print_title "gdrive"
     package=gdrive
     if brew list $package > /dev/null 2>&1; then
         print_warning "$package: already installed"
@@ -21,13 +20,13 @@ check_gdrive() {
 }
 
 setup_gdrive() {
-    print_message "Setup gdrive"
+    print_message "Setup gdrive..."
     gdrivedir=$HOME/.gdrive
     if [ -e $gdrivedir ]; then
         print_warning "gdrive: already setupped"
     else
         gdrive list
-        print_success "gdrive: was successfully setupped"
+        print_success "gdrive: successfully setupped"
     fi
 }
 

@@ -6,16 +6,15 @@ DOTFILES_PATH="$HOME/dotfiles"
 # Load utils
 . $DOTFILES_PATH/setup/utils.sh
 
-print_title "Emacs"
 
 install_emacs() {
-    print_message "Checking if Emacs.app is installed"
+    print_title "Emacs"
     emacsfile=/Applications/Emacs.app
 
     if [ -e $emacsfile ]; then
         print_warning "Emacs.app: already exists"
     else
-        print_message "Installing Emacs"
+        print_message "Installing Emacs..."
         download_url=https://github.com/vigou3/emacs-modified-macos/releases/download/v26.1-2-modified-1/Emacs-26.1-2-modified-1.dmg
         dmg_file=${download_url##*/}
 
