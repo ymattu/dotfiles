@@ -7,7 +7,8 @@ DOTFILES_PATH="$HOME/dotfiles"
 . $DOTFILES_PATH/setup/utils.sh
 
 install_iterm2() {
-    print_title "Downloading iterm2..."
+    print_title "iterm2"
+    print_message "Downloading iterm2..."
     download_url=https://iterm2.com/downloads/stable/latest
     zip_file=${download_url##*/}
 

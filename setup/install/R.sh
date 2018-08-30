@@ -6,8 +6,9 @@ DOTFILES_PATH="$HOME/dotfiles"
 # Load utils
 . $DOTFILES_PATH/setup/utils.sh
 
+print_title "R"
+
 install_R() {
-    print_title "R"
     print_message "Installing R"
     wget https://cran.rstudio.com/bin/macosx/R-3.5.1.pkg
     sudo installer -pkg R-3.5.1.pkg -target /
@@ -45,6 +46,7 @@ install_MeCab() {
 }
 
 install_jumanpp() {
+    print_title"JUMAN++"
     print_message "Installing JUMAN++"
 
     if brew list "jumanpp" > /dev/null 2>&1; then
@@ -57,6 +59,7 @@ install_jumanpp() {
 }
 
 install_packages() {
+    print_title "R packages"
     print_message "Installing R packages"
     Rscript -e "install.packages('tidyverse')"
     Rscript -e "install.packages(c('devtools', 'githubinstall','tm','slam', 'tidytext', 'MlBayesOpt'))"
