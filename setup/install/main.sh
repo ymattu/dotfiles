@@ -11,4 +11,5 @@
 . setup/install/java.sh
 . setup/install/R.sh
 . setup/install/iterm2.sh
+. setup/install/fonts.sh
 

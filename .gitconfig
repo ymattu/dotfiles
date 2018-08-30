@@ -3,13 +3,6 @@
   email = mattu.yuya@gmail.com
 [color]
   ui = auto
-[color "diff"]
-  old = red strike
-  new = green italic
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
 [alias]
   co = checkout
   st = status

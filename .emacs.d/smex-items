@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ sky-color-clock--update-weather
  free-keys
  package-install
  load-file
  inferior-julia-shell
  julia
  inferior-julia
- ess-eval-paragraph-and-go
 )
 
 ;; ----- smex-data -----
@@ -109,4 +109,5 @@
  (quickrun . 1)
  (ess-load-file . 1)
  (ess-eval-paragraph-and-go . 1)
+ (sky-color-clock--update-weather . 1)
 )

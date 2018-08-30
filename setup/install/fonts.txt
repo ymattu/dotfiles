@@ -1,0 +1,15 @@
+https://github.com/edihbrandon/RictyDiminished/blob/master/RictyDiminished-Regular.ttf
+https://github.com/edihbrandon/RictyDiminished/blob/master/RictyDiminished-Bold.ttf
+https://github.com/edihbrandon/RictyDiminished/blob/master/RictyDiminished-Oblique.ttf
+https://github.com/edihbrandon/RictyDiminished/blob/master/RictyDiminishedDiscord-Regular.ttf
+https://github.com/edihbrandon/RictyDiminished/blob/master/RictyDiminishedDiscord-Bold.ttf
+https://github.com/edihbrandon/RictyDiminished/blob/master/RictyDiminishedDiscord-Oblique.ttf
+https://github.com/ymattu/Ricty-Diminished-Powerline/blob/master/Ricty%20Diminished%20Regular%20for%20Powerline.ttf
+https://github.com/ymattu/Ricty-Diminished-Powerline/blob/master/Ricty%20Diminished%20Bold%20for%20Powerline.ttf
+https://github.com/ymattu/symbola-fonts/blob/master/Symbola.ttf
+https://github.com/domtronn/all-the-icons.el/blob/master/fonts/all-the-icons.ttf
+https://github.com/domtronn/all-the-icons.el/blob/master/fonts/file-icons.ttf
+https://github.com/domtronn/all-the-icons.el/blob/master/fonts/fontawesome.ttf
+https://github.com/domtronn/all-the-icons.el/blob/master/fonts/material-design-icons.ttf
+https://github.com/domtronn/all-the-icons.el/blob/master/fonts/octicons.ttf
+https://github.com/domtronn/all-the-icons.el/blob/master/fonts/weathericons.ttf
