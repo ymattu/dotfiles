@@ -10,7 +10,7 @@ Open a terminal and run following:
 bash -c "$(curl -LSs https://raw.github.com/ymattu/dotfiles/master/setup.sh)"
 ```
 
-The setup list is this:
+The setup list is:
 
 - Download dotfiles
 - Create symbolic links
