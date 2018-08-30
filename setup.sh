@@ -78,10 +78,8 @@ main() {
     check_os
     download_dotfiles
 
-    . $DOTFILES_PATH/setup/symbolic_links.sh
-    . $DOTFILES_PATH/setup/install/main.sh
-    . $DOTFILES_PATH/setup/gdrive.sh
-    . $DOTFILES_PATH/setup/emacs.sh
+    . $DOTFILES_PATH/setup/deploy.sh
+    . $DOTFILES_PATH/setup/initialize/initialize.sh
 
     change_login_shell
     reboot_system

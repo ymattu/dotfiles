@@ -7,7 +7,8 @@ DOTFILES_PATH="$HOME/dotfiles"
 . $DOTFILES_PATH/setup/utils.sh
 
 install_iterm2() {
-    print_title "Downloading iterm2..."
+    print_title "iterm2"
+    print_message "Downloading iterm2..."
     download_url=https://iterm2.com/downloads/stable/latest
     zip_file=${download_url##*/}
 
@@ -15,11 +16,11 @@ install_iterm2() {
     sudo unzip $zip_file -d /Applications
     rm $zip_file
 
-    print_message "iterm2: successfully installed."
+    print_message "iterm2: successfully installed"
 }
 
 setting_iterm2() {
-    print_title "Setting iterm2"
+    print_message "Setting iterm2..."
     # tmp
     readonly DIR_TEMP="${HOME}/temp"
     [ ! -e ${DIR_TEMP} ] && mkdir ${DIR_TEMP}

@@ -5,7 +5,7 @@ from prompt_toolkit.keys import Keys
 os.environ['EDITOR'] = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 os.environ['VISUAL'] = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 
-$DIR_HIST_PATH = "/Users/yuya/.dirhist"
+$DIR_HIST_PATH = "~/.dirhist"
 
 $PATH.append("/usr/local/bin")
 $PATH.append("~/.fzf/bin")
@@ -48,7 +48,7 @@ aliases["la"] = "ls -la"
 aliases["ll"] = "ls -l"
 aliases["es"] = "exec $SHELL"
 aliases["emacsclient"] = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
-aliases["rc"] = "emacsclient ~/.xonshrc"
+aliases["rc"] = "emacsclient ~/dotfiles/.xonshrc"
 aliases["cp"] = "cp -i"
 aliases["rm"] = "rm -i"
 aliases["jn"] = "jupyter notebook"

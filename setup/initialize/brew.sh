@@ -9,7 +9,7 @@ install_homebrew() {
     else
         print_message "Installing Homebrew..."
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        print_success "successfully installed"
+        print_success "Homebrew: successfully installed"
     fi
 
     print_message "brew update..."
@@ -31,10 +31,10 @@ install_packages() {
     print_title "Homebrew Packages"
     print_message "Installing packages..."
     packages=(
-        go scala gtk+3 hub \
-        imagemagick lua node openssl postgresql \
+        go scala \
+        imagemagick node openssl postgresql \
         python3 pwgen rbenv readline ruby-build \
-        sbt sqlite tig tmux tree vim wget zsh fish \
+        sbt sqlite tmux tree vim wget zsh fish \
         poppler pdftools cmigemo node gtags gdrive
     )
     for package in "${packages[@]}"; do
