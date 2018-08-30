@@ -79,8 +79,6 @@ main() {
     download_dotfiles
 
     . $DOTFILES_PATH/setup/symbolic_links.sh
-    . $DOTFILES_PATH/setup/install/brew.sh
-    . $DOTFILES_PATH/setup/gdrive.sh
     . $DOTFILES_PATH/setup/install/main.sh
 
     change_login_shell
