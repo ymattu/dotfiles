@@ -111,7 +111,7 @@
 (fset 'package-desc-vers 'package--ac-desc-version)
 (package-initialize)
 
-(add-to-list 'load-path "~/.emacs.d/elpa")
+(add-to-list 'load-path "~/dotfiles/.emacs.d/elpa")
 
 (require 'auto-install)
 (setq auto-install-directory "~/.emacs.d/elpa/")    ; auto-install を elpa に変更
@@ -1916,7 +1916,7 @@ with regard to indentation."
    (setq exec-path (append (list dir) exec-path))))
 
 ;;multi-term
-(setq load-path(cons "~/.emacs.d/elpa" load-path))
+(setq load-path(cons "~/dotfiles/.emacs.d/elpa" load-path))
 (require 'multi-term)
 (setenv "TERMINFO" "~/.terminfo")
 
@@ -2306,7 +2306,7 @@ are always included."
 
 ;R 関連--------------------------------------------
 ;; パスの追加
-(add-to-list 'load-path "~/.emacs.d/elpa")
+(add-to-list 'load-path "~/dotfiles/.emacs.d/elpa")
 
 ;; 拡張子が r, R の場合に R-mode を起動
 (add-to-list 'auto-mode-alist '("\\.[rR]$" . R-mode))
@@ -2716,7 +2716,7 @@ Necessary due to interactions between polymode and yas snippet"
 ;; ---------------------------------------------------------
 ;; matlab の設定
 ;; ---------------------------------------------------------
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/")) ;; パス設定
+(add-to-list 'load-path (expand-file-name "~/dotfiles/.emacs.d/elpa/")) ;; パス設定
 (autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
 
 (setq auto-mode-alist (cons '("\\.m$" . matlab-mode) auto-mode-alist))
@@ -3903,7 +3903,7 @@ __END__
 ;; ---------------------------------------------------------
 ;; lilypond-mode の設定
 ;; ---------------------------------------------------------
-(add-to-list 'load-path "~/.emacs.d/elpa/lilypond")
+(add-to-list 'load-path "~//dotfiles.emacs.d/elpa/lilypond")
 (require 'lilypond-mode)
 (add-to-list 'auto-mode-alist '("\\.ly" . LilyPond-mode))
 (add-hook 'LilyPond-mode-hook 'turn-on-font-lock)
