@@ -2658,7 +2658,7 @@ Necessary due to interactions between polymode and yas snippet"
 
 
 ;;; julia 関連---------------------------------------
-(setq inferior-julia-program-name "/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia")
+(setq inferior-julia-program-name "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia")
 ;; (add-to-list 'load-path "/usr/local/bin/julia")
 ;; (require 'julia-mode)
 (add-to-list 'auto-mode-alist '("\\.jl$" . ess-julia-mode))

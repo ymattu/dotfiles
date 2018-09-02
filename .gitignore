@@ -1,4 +1,4 @@
 .DS_Store
 *~
-recentf
-smex-items
+.emacs.d/recentf
+.emacs.d/smex-items
