@@ -54,7 +54,7 @@ aliases["rm"] = "rm -i"
 aliases["jn"] = "jupyter notebook"
 aliases["jl"] = "jupyter lab"
 aliases["fish"] = "/usr/local/bin/fish"
-aliases["julia"] = "/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia"
+aliases["julia"] = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"
 
 import json
 from collections import OrderedDict
