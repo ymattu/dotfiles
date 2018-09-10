@@ -1320,8 +1320,8 @@ with regard to indentation."
 ;; ズームイン / アウトの設定
 (defhydra hydra-zoom (global-map "<f6>")
   "zoom"
-  ("g" text-scale-increase "zoom in")
-  ("l" text-scale-decrease "zoom out"))
+  ("i" text-scale-increase "zoom in")
+  ("o" text-scale-decrease "zoom out"))
 
 
 ;; ---------------------------------------------------------
@@ -2731,7 +2731,7 @@ Necessary due to interactions between polymode and yas snippet"
   matlab-return-add-semicolon t
   matlab-show-mlint-warnings t
   mlint-programs '("/Applications/MATLAB_R2017a.app/bin/maci64/mlint")
-  matlab-mode-install-path (list (expand-file-name "~/.emacs.d/elisp/matlab/"))
+  matlab-mode-install-path (list (expand-file-name "~/dotfiles/.emacs.d/elisp/matlab/"))
   )
 
 (autoload 'mlint-minor-mode "mlint" nil t)
@@ -3937,4 +3937,10 @@ __END__
 ;; ---------------------------------------------------------
 (autoload 'dockerfile-mode "dockerfile-mode" nil t)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
+
+;; ---------------------------------------------------------
+;; xonshrcの設定
+;; ---------------------------------------------------------
+(add-to-list 'auto-mode-alist '(".xonshrc\\'" . python-mode))
 

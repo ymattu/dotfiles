@@ -2,11 +2,7 @@
 ;; ----- smex-history -----
 (
  sky-color-clock--update-weather
-<<<<<<< HEAD
  sky-color-clock-preview
-=======
- revert-buffer
->>>>>>> c323a4033418329211dd023f2308532649132e68
  free-keys
  package-install
  load-file
@@ -109,14 +105,10 @@
  (ess-julia-mode . 1)
  (run-julia . 1)
  (inferior-julia . 4)
- (revert-buffer . 2)
+ (revert-buffer . 1)
  (quickrun . 1)
  (ess-load-file . 1)
  (ess-eval-paragraph-and-go . 1)
-<<<<<<< HEAD
- (sky-color-clock--update-weather . 3)
- (sky-color-clock-preview . 1)
-=======
  (sky-color-clock--update-weather . 7)
->>>>>>> c323a4033418329211dd023f2308532649132e68
+ (sky-color-clock-preview . 1)
 )
