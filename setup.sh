@@ -48,15 +48,15 @@ download_dotfiles() {
 }
 
 change_login_shell() {
-    print_title "Xonsh"
-    loginshell="$HOME/.pyenv/shims/xonsh"
+    print_title "zsh"
+    loginshell="/usr/local/bin/zsh"
     if [ $SHELL == $loginshell ]; then
-        print_warning "Login shell: already xonsh"
+        print_warning "Login shell: already zsh"
     else
         print_message "Changing login shell..."
         grep "$loginshell" /etc/shells &>/dev/null || sudo sh -c "echo $loginshell >> /etc/shells"
         chsh -s $loginshell
-        print_success "successfully changed to xonsh"
+        print_success "successfully changed to zsh"
     fi
 }
 
