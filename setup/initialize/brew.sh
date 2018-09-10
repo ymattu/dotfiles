@@ -32,8 +32,8 @@ install_packages() {
     print_message "Installing packages..."
     packages=(
         go scala \
-        imagemagick node openssl postgresql \
-        python3 pwgen rbenv readline ruby-build \
+        jq imagemagick node openssl postgresql \
+        pwgen rbenv readline ruby-build \
         sbt sqlite tmux tree vim wget zsh fish \
         poppler pdftools cmigemo node gtags gdrive
     )

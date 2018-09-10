@@ -54,6 +54,11 @@ install_juno() {
     sudo unzip $zip_file -d /Applications
     rm $zip_file
 
+    print_message "Making .junorc.json..."
+    jupyter_dir=$(which jupyter-notebook)
+    jupyter_home=$HOME
+    printf '{"jupyterCommand": "%s","jupyterPort": 8888,"jupyterHome": "%s","openBrowserOnStartup": false}' $jupyter_dir $jupyter_home | jq . > $DOTFILES_PATH/.junorc.json
+    ln -s $DOTFILES_PATH/.junorc.json $HOME/
     print_success "Success!"
 }
 
