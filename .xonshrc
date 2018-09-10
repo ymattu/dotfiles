@@ -8,7 +8,6 @@ os.environ['VISUAL'] = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 $DIR_HIST_PATH = "~/.dirhist"
 
 $PATH.append("/usr/local/bin")
-$PATH.append("~/.fzf/bin")
 $PATH.append("/usr/local/texlive/2017/bin/x86_64-darwin")
 
 
@@ -50,6 +49,13 @@ $PL_TOOLBAR = "who>time"
 $LS_COLORS="di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30"
 # パワーラインの読み込み
 xontrib load powerline
+# 右に時間
+from time import strftime
+def get_time():
+    def prompt():
+        return strftime('[ %H:%M:%S ]')
+    return prompt
+$RIGHT_PROMPT = get_time()
 
 # エイリアス
 aliases["lt"] = "ls -ltr"
@@ -65,6 +71,7 @@ aliases["jn"] = "jupyter notebook"
 aliases["jl"] = "jupyter lab"
 aliases["fish"] = "/usr/local/bin/fish"
 aliases["julia"] = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"
+aliases["juliaold"] = "/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia"
 
 import json
 from collections import OrderedDict
