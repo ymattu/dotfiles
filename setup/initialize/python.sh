@@ -47,17 +47,26 @@ install_packages() {
 install_juno() {
     print_title "Juno for Jupyter Notebooks"
     print_message "Installing Juno..."
-    download_url=https://github.com/uetchy/juno/releases/download/v0.3.2-beta.1/juno-0.3.2-beta.1-mac.zip
-    zip_file=${download_url##*/}
+    if [ -e /Applications/Juno.app ]; then
+        print_warning "Juno is already installed"
+    else
+        download_url=https://github.com/uetchy/juno/releases/download/v0.3.2-beta.1/juno-0.3.2-beta.1-mac.zip
+        zip_file=${download_url##*/}
 
-    curl -LO $download_url
-    sudo unzip $zip_file -d /Applications
-    rm $zip_file
+        curl -LO $download_url
+        sudo unzip $zip_file -d /Applications
+        rm $zip_file
+    fi
 
     print_message "Making .junorc.json..."
     jupyter_dir=$(which jupyter-notebook)
     jupyter_home=$HOME
     printf '{"jupyterCommand": "%s","jupyterPort": 8888,"jupyterHome": "%s","openBrowserOnStartup": false}' $jupyter_dir $jupyter_home | jq . > $DOTFILES_PATH/.junorc.json
+
+    if [ -e $HOME/.junorc.json ]; then
+        sudo rm .junorc.json
+    fi
+
     ln -s $DOTFILES_PATH/.junorc.json $HOME/
     print_success "Success!"
 }
