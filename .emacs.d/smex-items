@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ untabify
  jedi:install-server
  jedi:setup
  sky-color-clock--update-weather
  sky-color-clock-preview
  free-keys
  package-install
- load-file
 )
 
 ;; ----- smex-data -----
@@ -45,7 +45,7 @@
  (undo-tree-mode . 2)
  (undo-tree-visualize . 11)
  (evil-normal-state . 2)
- (untabify . 23)
+ (untabify . 24)
  (comment-box . 48)
  (evil-upcase . 3)
  (twit . 1)

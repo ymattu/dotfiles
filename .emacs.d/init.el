@@ -28,7 +28,7 @@
 ;; - rdefs → gem
 ;; - google-ime-skk → gem
 ;; - grip → pip (for matkdown preview)
-;; - vertualenv → pip (for jedi)
+;; - virtualenv → pip (for jedi)
 ;; - LilyPond
 ;; - gtags (brew)
 ;; ---------------------------------------------------------
@@ -505,6 +505,16 @@
     ))
 
 (global-set-key (kbd "C-c f") 'reveal-in-finder)
+
+
+;; sudoで開きなおす
+(defun reopen-with-sudo ()
+  "Reopen current buffer-file with sudo using tramp."
+  (interactive)
+  (let ((file-name (buffer-file-name)))
+    (if file-name
+        (find-alternate-file (concat "/sudo::" file-name))
+      (error "Cannot get a file name"))))
 
 
 ;;バッファ管理------------------------------------
