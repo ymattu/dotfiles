@@ -42,9 +42,23 @@ install_packages() {
     done
 }
 
+install_juno() {
+    print_title "Juno for Jupyter Notebooks"
+    print_message "Installing Juno..."
+    download_url=https://github.com/uetchy/juno/releases/download/v0.3.2-beta.1/juno-0.3.2-beta.1-mac.zip
+    zip_file=${download_url##*/}
+
+    curl -LO $download_url
+    sudo unzip $zip_file -d /Applications
+    rm $zip_file
+
+    print_success "Success!"
+}
+
 main() {
     install_pyenv
     install_packages
+    install_juno
 }
 
 main
