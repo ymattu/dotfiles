@@ -100,7 +100,7 @@ def time():
 
 @register_sec
 def ymdhms():
-    return Section(strftime(' %Y-%m-%d %H:%M:%S '), 'WHITE', '#0000FF')
+    return Section(strftime(' %Y-%m-%d %H:%M:%S '), 'WHITE', '#0404B4')
 
 @register_sec
 def short_cwd():

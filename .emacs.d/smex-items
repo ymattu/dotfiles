@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ reopen-with-sudo
  untabify
  jedi:install-server
  jedi:setup
  sky-color-clock--update-weather
  sky-color-clock-preview
  free-keys
- package-install
 )
 
 ;; ----- smex-data -----
@@ -111,4 +111,5 @@
  (ess-eval-paragraph-and-go . 1)
  (sky-color-clock--update-weather . 8)
  (sky-color-clock-preview . 1)
+ (reopen-with-sudo . 1)
 )
