@@ -298,6 +298,7 @@ aliases["jl"] = "jupyter lab"
 aliases["fish"] = "/usr/local/bin/fish"
 aliases["julia"] = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"
 aliases["juliaold"] = "/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia"
+aliases["juno"] = "open -a Juno"
 
 import json
 from collections import OrderedDict
