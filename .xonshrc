@@ -1,6 +1,5 @@
 import os
 from collections import Counter
-from prompt_toolkit.keys import Keys
 
 os.environ['EDITOR'] = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
 os.environ['VISUAL'] = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
@@ -64,7 +63,9 @@ aliases["la"] = "ls -la"
 aliases["ll"] = "ls -l"
 aliases["es"] = "exec $SHELL"
 aliases["emacsclient"] = "/Applications/Emacs.app/Contents/MacOS/bin/emacsclient"
-aliases["rc"] = "emacsclient ~/dotfiles/.xonshrc"
+aliases["ec"] = "emacsclient ~/dotfiles/.xonshrc"
+aliases["ez"] = "emacsclient ~/dotfiles/.zshrc"
+aliases["eb"] = "emacsclient ~/dotfiles/.bashrc"
 aliases["cp"] = "cp -i"
 aliases["rm"] = "rm -i"
 aliases["jn"] = "jupyter notebook"
@@ -210,3 +211,4 @@ STYLES = {
     'call': Fore.RED + '--> ' + Fore.YELLOW + Style.BRIGHT + '{0}',
 }
 backtrace.hook(reverse=True, strip_path=True, styles=STYLES)
+
