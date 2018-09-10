@@ -18,9 +18,11 @@ install_pyenv(){
         echo "export PATH=$PYENV_ROOT/bin:$PATH" >> ~/.bashrc
         echo 'eval "$(pyenv init -)"' >> ~/.bashrc
         source ~/.bashrc
+        unset PYENV_VERSION
         pyenv install 3.6.0
         pyenv install anaconda3-5.0.0
         pyenv global anaconda3-5.0.0
+        pyenv rehash
         git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
         echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
         print_success "successfully installed"
@@ -29,7 +31,7 @@ install_pyenv(){
 
 install_packages() {
     print_message "Installing packages..."
-    packages=(grip vertualenv xonsh backtrace xontrib-powerline)
+    packages=(grip virtualenv jedi epc xonsh backtrace xontrib-powerline)
 
     for package in "${packages[@]}"; do
         if pip list | grep "$package" > /dev/null 2>&1; then
