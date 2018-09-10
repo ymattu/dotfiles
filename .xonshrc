@@ -15,12 +15,20 @@ $PATH.append("/usr/local/texlive/2017/bin/x86_64-darwin")
 """
 基本設定
 """
+# vi風の操作がシェル上で直感的でないのでFalse
+$VI_MODE = False
+# 補完をEnterで直接実行しない
+$COMPLETIONS_CONFIRM = True
+# Ctrl + D で終了しない
+$IGNOREEOF = True
 # カラーテーマ
 $XONSH_COLOR_STYLE = "native"
 # tabではなく空白4つ
 $INDENT = "    "
 # 補完時に大小区別しない
 $CASE_SENSITIVE_COMPLETIONS = False
+# 連続重複コマンドを保存しない
+$HISTCONTROL = "ignoredups"
 # 括弧を補完
 $XONSH_AUTOPAIR = True
 # ディレクトリ名を入力すればcdできる
@@ -29,8 +37,10 @@ $AUTO_CD = True
 $XONSH_SHOW_TRACEBACK = True
 # プロンプトの設定タイムアウトのメッセージ抑制
 $SUPPRESS_BRANCH_TIMEOUT_MESSAGE = True
+# キー入力即評価
+$UPDATE_COMPLETIONS_ON_KEYPRESS = True
 
-# 見た目ウザかったら変更する
+# 見た目を変更する
 # 参考:http://xon.sh/tutorial.html#customizing-the-prompt
 # 参考:https://github.com/santagada/xontrib-powerline
 $PL_PROMPT = "short_cwd>branch"
@@ -106,6 +116,47 @@ def custom_keybindings(bindings, **kw):
         selected = $(echo @(hist) | fzf)
         event.current_buffer.insert_text(selected.strip())
 
+# 直近のxonshjobころす
+# https://github.com/zardus/xonshrc/blob/master/xonshrc
+def _kill_last(args, stdin=None):
+        if __xonsh_active_job__ is None:
+                print("No active job. Aborting.")
+                return
+        cmd = 'kill %s %d' % (''.join(args), __xonsh_all_jobs__[__xonsh_active_job__]['pgrp'])
+        os.system(cmd)
+aliases['kill_last'] = _kill_last
+
+# diskutil infoを見る
+# https://github.com/asmeurer/dotfiles/blob/master/.xonshrc
+def _free(args, stdin=None):
+    disk_info = $(diskutil info /)
+    return [i for i in disk_info.splitlines() if "Free" in i][0] + '\n'
+aliases['fr'] = _free
+
+# ライブラリの実行時import
+# https://vaaaaaanquish.hatenablog.com/entry/2017/12/26/190153
+# xonsh上で使うときがありそうなライブラリはlazyasdで補完時、実行時に読み込み
+from xonsh.lazyasd import lazyobject
+import importlib
+lazy_module_dict = {
+    'sys': 'sys',
+    'random': 'random',
+    'shutil': 'shutil',
+    'pd': 'pandas',
+    'np': 'numpy',
+    'requests': 'requests',
+    'os': 'os',
+    'plt': 'matplotlib.pyplot',
+    'Path': 'pathlib.Path',
+        }
+for k,v in lazy_module_dict.items():
+    t = "@lazyobject\ndef {}():\n    return importlib.import_module('{}')".format(k, v)
+    exec(t)
+
+
+"""
+xontrib
+"""
 import xonsh.tools
 import backtrace
 import sys
