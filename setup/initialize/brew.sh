@@ -35,7 +35,7 @@ install_packages() {
         jq imagemagick node openssl postgresql \
         pwgen rbenv readline ruby-build \
         sbt sqlite tmux tree vim wget zsh fish \
-        poppler pdftools cmigemo node gtags gdrive
+        poppler pdftools cmigemo node gtags gdrive peco
     )
     for package in "${packages[@]}"; do
         if brew list "$package" > /dev/null 2>&1; then

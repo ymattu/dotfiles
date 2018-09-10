@@ -92,29 +92,37 @@ def get_history(session_history=None, return_list=False):
     else:
         return '\n'.join(cmds)
 
-
+# キーバインド
 from prompt_toolkit.keys import Keys
-from prompt_toolkit.filters import (Condition, IsMultiline, HasSelection,
-                                    EmacsInsertMode, ViInsertMode)
-
-
+from prompt_toolkit.filters import (Condition, IsMultiline, HasSelection, EmacsInsertMode, ViInsertMode)
 @events.on_ptk_create
 def custom_keybindings(bindings, **kw):
+    # ptk 2.xでは不要
     handler = bindings.registry.add_binding
-    insert_mode = EmacsInsertMode()
-    # insert_mode = ViInsertMode()
 
-    @handler(Keys.ControlX, Keys.ControlE, filter=insert_mode)
+    # ptk 2.xでは @bindings.add('c-v') とする
+    # コマンド入力中にctrl+vでvim編集
+    @handler(Keys.ControlV)
     def edit_in_editor(event):
         event.current_buffer.tempfile_suffix = '.py'
         event.current_buffer.open_in_editor(event.cli)
 
-    @handler(Keys.ControlR, filter=insert_mode)
+    # ctrl+rで履歴をpecoに流して検索
+    @handler(Keys.ControlR)
     def select_history(event):
         sess_history = $(history).split('\n')
         hist = get_history(sess_history)
-        selected = $(echo @(hist) | fzf)
+        selected = $(echo @(hist) | peco)
         event.current_buffer.insert_text(selected.strip())
+
+    # ctrl+sでssh先をpeco
+    @handler(Keys.ControlS)
+    def select_ssh(event):
+        hosts = '\n'.join([x for x in get_ssh().split('\n') if x!='*' and 'HostKey' not in x])
+        selected = $(echo @(hosts) | peco)
+        if selected:
+            event.current_buffer.insert_text('ssh ' + selected.strip())
+
 
 # 直近のxonshjobころす
 # https://github.com/zardus/xonshrc/blob/master/xonshrc
