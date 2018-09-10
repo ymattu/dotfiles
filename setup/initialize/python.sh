@@ -19,8 +19,8 @@ install_pyenv(){
         echo 'eval "$(pyenv init -)"' >> ~/.bashrc
         source ~/.bashrc
         pyenv install 3.6.0
-        pyenv install anaconda3-5.0.1
-        pyenv global anaconda3-5.0.1
+        pyenv install anaconda3-5.0.0
+        pyenv global anaconda3-5.0.0
         git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
         echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
         print_success "successfully installed"

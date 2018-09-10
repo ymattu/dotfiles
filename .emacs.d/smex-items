@@ -109,6 +109,6 @@
  (quickrun . 1)
  (ess-load-file . 1)
  (ess-eval-paragraph-and-go . 1)
- (sky-color-clock--update-weather . 7)
+ (sky-color-clock--update-weather . 8)
  (sky-color-clock-preview . 1)
 )

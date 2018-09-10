@@ -1,5 +1,5 @@
 {
-  "jupyterCommand": "$HOME/.pyenv/versions/anaconda3-4.3.1/bin/jupyter-notebook",
+  "jupyterCommand": "$HOME/.pyenv/versions/anaconda3-5.0.0/bin/jupyter-notebook",
   "jupyterPort": 8888,
   "jupyterHome": "$HOME",
   "openBrowserOnStartup": false
