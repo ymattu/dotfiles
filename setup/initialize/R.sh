@@ -16,6 +16,13 @@ install_R() {
     print_success "successfully installed"
 }
 
+setup_R() {
+    print_title".R directory..."
+    dir=$HOME/.R; [ ! -e $dir ] && mkdir -p $dir
+    dir=$HOME/.R/.library; [ ! -e $dir ] && mkdir -p $dir
+    print_success "directory successfully created"
+}
+
 install_RStudio() {
     print_message "Installing RStudio..."
     wget https://download1.rstudio.org/RStudio-1.1.456.dmg
@@ -69,6 +76,7 @@ install_packages() {
 
 main(){
     install_R
+    setup_R
     install_RStudio
     install_MeCab
     install_jumanpp
