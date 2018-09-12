@@ -1,6 +1,6 @@
 {
-  "jupyterCommand": "/Users/matsumura/.pyenv/versions/anaconda3-5.0.0/bin/jupyter-notebook",
+  "jupyterCommand": "/Users/ymattu/.pyenv/versions/anaconda3-5.0.1/bin/jupyter-notebook",
   "jupyterPort": 8888,
-  "jupyterHome": "/Users/matsumura",
+  "jupyterHome": "/Users/ymattu",
   "openBrowserOnStartup": false
 }

@@ -64,10 +64,10 @@ install_juno() {
     printf '{"jupyterCommand": "%s","jupyterPort": 8888,"jupyterHome": "%s","openBrowserOnStartup": false}' $jupyter_dir $jupyter_home | jq . > $DOTFILES_PATH/.junorc.json
 
     if [ -e $HOME/.junorc.json ]; then
-        sudo rm .junorc.json
+        sudo rm -f .junorc.json
     fi
 
-    ln -s $DOTFILES_PATH/.junorc.json $HOME/
+    ln -s $DOTFILES_PATH/.junorc.json $HOME/.junorc.json
     print_success "Success!"
 }
 
