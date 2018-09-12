@@ -41,7 +41,7 @@
  (jedi:setup . 10)
  (SAS-mode . 3)
  (fundamental-mode . 2)
- (R . 30)
+ (R . 31)
  (undo-tree-mode . 2)
  (undo-tree-visualize . 11)
  (evil-normal-state . 2)
