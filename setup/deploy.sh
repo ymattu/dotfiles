@@ -8,7 +8,7 @@ DOTFILES_PATH="$HOME/dotfiles"
 
 
 deploy() {
-    for file in .??*
+    for file in .?*
     do
         filepath="${PWD}/${file}"
 
@@ -19,6 +19,9 @@ deploy() {
         ln -sfn $filepath $HOME/$file
         print_success "$HOME/$file -> $filepath"
     done
+
+    ln -s $HOME/dotfiles/.R/.Renviron $HOME/.Renviron
+    print_success "$HOME/.Renviron -> $HOME/dotfiles/.R/.Renviron"
 }
 
 main() {
