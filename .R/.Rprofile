@@ -25,7 +25,7 @@ options(
 .First = function() {
   stopifnot(dir.exists(Sys.getenv("R_LIBS_USER")))
   if (interactive()) {
-    cran = c("tidyverse", "githubinstall", "devtools")
+    cran = c("tidyverse", "githubinstall", "devtools", "formatR")
     options(defaultPackages = c(getOption("defaultPackages"), cran))
     if (!(.Platform$GUI %in% c("AQUA", "Rgui")) && Sys.getenv("INSIDE_EMACS") == "") {
       utils::loadhistory(file = Sys.getenv("R_HISTFILE"))
