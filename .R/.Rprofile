@@ -56,3 +56,7 @@ options(
     }
   })
 }
+
+# Q でRをすぐに終了する
+# http://hoxo-m.hatenablog.com/entry/20111026/p1
+class(Q)=Q="no";print.no=q
