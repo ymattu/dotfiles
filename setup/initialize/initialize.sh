@@ -1,14 +1,14 @@
 #!/bin/bash
 
-. setup/install/xcode.sh
-. setup/install/brew.sh
-. setup/install/gdrive.sh
-. setup/install/fonts.sh
-. setup/install/emacs.sh
-. setup/install/rust.sh
-. setup/install/node.sh
-. setup/install/gem.sh
-. setup/install/python.sh
-. setup/install/java.sh
-. setup/install/R.sh
-. setup/install/iterm2.sh
+. setup/initialize/xcode.sh
+. setup/initialize/brew.sh
+. setup/initialize/gdrive.sh
+. setup/initialize/fonts.sh
+. setup/initialize/emacs.sh
+. setup/initialize/rust.sh
+. setup/initialize/node.sh
+. setup/initialize/gem.sh
+. setup/initialize/python.sh
+. setup/initialize/java.sh
+. setup/initialize/R.sh
+. setup/initialize/iterm2.sh
