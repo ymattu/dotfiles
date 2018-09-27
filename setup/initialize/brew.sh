@@ -1,6 +1,11 @@
 #!/bin/bash
 
-. setup/utils.sh
+# dotfiles path
+DOTFILES_PATH="$HOME/dotfiles"
+
+# Load utils
+. $DOTFILES_PATH/setup/utils.sh
+
 
 install_homebrew() {
     print_title "Homebrew"
