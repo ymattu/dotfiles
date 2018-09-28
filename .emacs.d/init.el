@@ -1472,6 +1472,18 @@ with regard to indentation."
 (add-hook 'julia-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'stan-mode-hook 'rainbow-delimiters-mode)
 
+(setq rainbow-delimiters-outermost-only-face-count 1)
+
+(set-face-foreground 'rainbow-delimiters-depth-1-face "#f0f0f0")
+(set-face-foreground 'rainbow-delimiters-depth-2-face "#ff5e5e")
+(set-face-foreground 'rainbow-delimiters-depth-3-face "#ffaa77")
+(set-face-foreground 'rainbow-delimiters-depth-4-face "#dddd77")
+(set-face-foreground 'rainbow-delimiters-depth-5-face "#80ee80")
+(set-face-foreground 'rainbow-delimiters-depth-6-face "#66bbff")
+(set-face-foreground 'rainbow-delimiters-depth-7-face "#da6bda")
+(set-face-foreground 'rainbow-delimiters-depth-8-face "#afafaf")
+(set-face-foreground 'rainbow-delimiters-depth-9-face "#9a4040")
+
 ;; 括弧の色を強調する設定
 (require 'color)
 (defun rainbow-delimiters-using-stronger-colors ()
