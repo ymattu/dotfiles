@@ -1,5 +1,5 @@
 ;; --------------------------------------------------------
-;; 外部プログラムで必要なもの
+; 外部プログラムで必要なもの
 ;; - R
 ;; - Julia
 ;; - Python (anaconda)
@@ -2325,6 +2325,8 @@ are always included."
 ;; ESS の設定
 ;; ---------------------------------------------------------
 (require 'ess-site)
+(require 'lsp-mode)
+(require 'lsp-ui)
 
 ;R 関連--------------------------------------------
 ;; パスの追加
@@ -2369,6 +2371,13 @@ are always included."
     (setq ess-loaded-p t)
     ;; flycheck はうざいので切る
     (flycheck-mode -1)
+
+    (lsp-register-client
+    (make-lsp-client :new-connection
+        (lsp-stdio-connection '("R" "--slave" "-e" "languageserver::run()"))
+        :major-modes '(ess-r-mode R-mode inferior-ess-r-mode)
+        :server-id 'lsp-R))
+
     (unless from-iess-p
       ;; ウィンドウが 1 つの状態で *.R を開いた場合はウィンドウを縦に分割して R を表示する
       (when (one-window-p
@@ -2378,15 +2387,15 @@ are always included."
           (switch-to-buffer-other-window buf)))
       ;; R を起動する前だと auto-complete-mode が off になるので自前で on にする
       ;; cf. ess.el の ess-load-extras
-      (when (and ess-use-auto-complete (require 'auto-complete nil t))
-        (add-to-list 'ac-modes 'ess-mode)
-        (mapcar (lambda (el) (add-to-list 'ac-trigger-commands el))
-                '(ess-smart-comma smart-operator-comma skeleton-pair-insert-maybe))
-        (setq ac-sources '(ac-source-R
-                           ac-source-R-args
-                           ac-source-R-objects
-                           ac-source-filename
-                           ac-source-yasnippet)))
+      ;; (when (and ess-use-auto-complete (require 'auto-complete nil t))
+      ;;   (add-to-list 'ac-modes 'ess-mode)
+      ;;   (mapcar (lambda (el) (add-to-list 'ac-trigger-commands el))
+      ;;           '(ess-smart-comma smart-operator-comma skeleton-pair-insert-maybe))
+      ;;   (setq ac-sources '(ac-source-R
+      ;;                      ac-source-R-args
+      ;;                      ac-source-R-objects
+      ;;                      ac-source-filename
+      ;;                      ac-source-yasnippet)))
       ))
 
   (if from-iess-p
@@ -2402,6 +2411,7 @@ are always included."
 
 ;; R-mode 起動直後の処理
 (add-hook 'R-mode-hook 'ess-load-hook)
+(add-hook 'R-mode-hook 'lsp-ui-mode)
 
 ;; R 起動直前の処理
 (defun ess-pre-run-hooks ()

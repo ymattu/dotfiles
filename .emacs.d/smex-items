@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- package-list-packages
+ package-reinstall
  package-install
+ package-list-packages
  package-refresh-contents
  whitespace-cleanup
  sky-color-clock--update-weather
  eshell
- undo-tree-redo
 )
 
 ;; ----- smex-data -----
@@ -22,7 +22,7 @@
  (describe-mode . 1)
  (flycheck-mode . 3)
  (insert-encoding-pragma . 4)
- (package-install . 39)
+ (package-install . 43)
  (nlinum-mode . 2)
  (linum-mode . 2)
  (exit . 5)
@@ -97,7 +97,7 @@
  (eval-region . 1)
  (package-install-file . 2)
  (gtags-mode . 1)
- (package-reinstall . 7)
+ (package-reinstall . 11)
  (emacs-version . 1)
  (run-python . 1)
  (server-start . 1)
