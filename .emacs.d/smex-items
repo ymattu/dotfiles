@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
+ package-list-packages
+ package-install
+ package-refresh-contents
  whitespace-cleanup
  sky-color-clock--update-weather
  eshell
  undo-tree-redo
- hydra-zoom/body
- untabify
- flycheck-mode
 )
 
 ;; ----- smex-data -----
 (
  (emacs-init-time . 3)
- (package-refresh-contents . 43)
+ (package-refresh-contents . 44)
  (list-packages . 35)
  (magit-popup-quit . 2)
  (magit-commit-popup . 1)
@@ -22,7 +22,7 @@
  (describe-mode . 1)
  (flycheck-mode . 3)
  (insert-encoding-pragma . 4)
- (package-install . 33)
+ (package-install . 39)
  (nlinum-mode . 2)
  (linum-mode . 2)
  (exit . 5)
@@ -114,4 +114,5 @@
  (reopen-with-sudo . 1)
  (hydra-zoom/body . 11)
  (eshell . 2)
+ (package-list-packages . 1)
 )

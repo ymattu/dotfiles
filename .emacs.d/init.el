@@ -2386,7 +2386,8 @@ are always included."
                            ac-source-R-args
                            ac-source-R-objects
                            ac-source-filename
-                           ac-source-yasnippet)))))
+                           ac-source-yasnippet)))
+      ))
 
   (if from-iess-p
       ;; R のプロセスが他になければウィンドウを分割する
