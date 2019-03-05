@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- R
+ whitespace-cleanup
  sky-color-clock--update-weather
- reopen-with-sudo
+ eshell
+ undo-tree-redo
+ hydra-zoom/body
  untabify
- jedi:install-server
- jedi:setup
- sky-color-clock-preview
+ flycheck-mode
 )
 
 ;; ----- smex-data -----
@@ -20,7 +20,7 @@
  (magit-push-popup . 1)
  (magit-quit-session . 1)
  (describe-mode . 1)
- (flycheck-mode . 2)
+ (flycheck-mode . 3)
  (insert-encoding-pragma . 4)
  (package-install . 33)
  (nlinum-mode . 2)
@@ -45,7 +45,7 @@
  (undo-tree-mode . 2)
  (undo-tree-visualize . 11)
  (evil-normal-state . 2)
- (untabify . 24)
+ (untabify . 25)
  (comment-box . 48)
  (evil-upcase . 3)
  (twit . 1)
@@ -56,7 +56,7 @@
  (multiple-cursors-mode . 1)
  (rmarkdown-to-pdf . 30)
  (ess-roxy-update-entry . 27)
- (whitespace-cleanup . 38)
+ (whitespace-cleanup . 49)
  (pangu-spacing-mode . 1)
  (ein:force-ipython-version-check . 1)
  (indent-guide-mode . 1)
@@ -71,7 +71,7 @@
  (hatena-blog-get . 1)
  (hatena-blog-edit . 2)
  (helm-myR-install-packages . 1)
- (jedi:ac-setup . 12)
+ (jedi:ac-setup . 13)
  (jedi:install-server . 14)
  (google-this . 1)
  (eval-buffer . 1)
@@ -87,7 +87,7 @@
  (yas-describe-tables . 1)
  (crux-create-scratch-buffer . 2)
  (point-redo . 1)
- (undo-tree-redo . 2)
+ (undo-tree-redo . 3)
  (rename-file . 4)
  (fish-mode . 1)
  (grep . 1)
@@ -109,7 +109,9 @@
  (quickrun . 1)
  (ess-load-file . 1)
  (ess-eval-paragraph-and-go . 1)
- (sky-color-clock--update-weather . 9)
+ (sky-color-clock--update-weather . 38)
  (sky-color-clock-preview . 1)
  (reopen-with-sudo . 1)
+ (hydra-zoom/body . 11)
+ (eshell . 2)
 )
