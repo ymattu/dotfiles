@@ -3639,22 +3639,19 @@ Necessary due to interactions between polymode and yas snippet"
 ;; ---------------------------------------------------------
 ;; diff-hl の設定
 ;; ---------------------------------------------------------
-(require 'diff-hl)
-;; ; バージョン管理下のコードをハイライト
-(global-diff-hl-mode)
-;; (require 'git-gutter)
-;; (git-gutter:linum-setup)
-;; (custom-set-variables
-;;  '(git-gutter:modified-sign "~")
-;;  '(git-gutter:added-sign    "+")
-;;  '(git-gutter:deleted-sign  "-")
-;; )
-;; (set-face-background 'git-gutter:modified "#f1fa8c")
-;; (set-face-background 'git-gutter:added "#50fa7b")
-;; (set-face-background 'git-gutter:deleted "#ff79c6")
+;; (require 'diff-hl)
+;; ;; ; バージョン管理下のコードをハイライト
+;; (global-diff-hl-mode)
+(require 'git-gutter-fringe+)
+(global-git-gutter+-mode)
 
-;; (global-git-gutter-mode +1)
+(set-face-background 'git-gutter-fr+-modified "#f1fa8c")
+(set-face-background 'git-gutter-fr+-added    "#50fa7b")
+(set-face-background 'git-gutter-fr+-deleted  "#ff79c6")
 
+(set-face-foreground 'git-gutter-fr+-modified "#f1fa8c")
+(set-face-foreground 'git-gutter-fr+-added    "#50fa7b")
+(set-face-foreground 'git-gutter-fr+-deleted  "#ff79c6")
 
 
 ;; ---------------------------------------------------------
