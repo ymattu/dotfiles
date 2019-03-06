@@ -1962,8 +1962,8 @@ with regard to indentation."
 (defun skt:shell ()
   (or
       ;; (executable-find "xonsh")
-      (executable-find "fish")
       (executable-find "zsh")
+      (executable-find "fish")
       (executable-find "bash")
       (error "can't find 'shell' command in PATH!!")))
 
