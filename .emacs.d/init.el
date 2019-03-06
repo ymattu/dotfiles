@@ -157,7 +157,15 @@
 
 
 ;;テーマ------------------------------------------
-(load-theme 'spacegray t)
+(require 'doom-themes)
+(load-theme 'doom-one t)
+
+;; Enable flashing mode-line on errors
+(doom-themes-visual-bell-config)
+
+;; Enable custom neotree theme (all-the-icons must be installed!)
+(doom-themes-neotree-config)
+;; (load-theme 'spacegray t)
 ;; (load-theme 'afternoon t)
 (set-face-background 'region "#d2e9ef") ;選択範囲の色
 
@@ -1350,28 +1358,28 @@ with regard to indentation."
 ;; ---------------------------------------------------------
 (require 'auto-complete)
 (require 'auto-complete-config)
-(global-auto-complete-mode t)
+;; (global-auto-complete-mode t)
 (setq ac-auto-show-menu 0.2) ; 補完リストが表示されるまでの時間
 (define-key ac-completing-map (kbd "C-n") 'ac-next)      ; C-n で次候補選択
 (define-key ac-completing-map (kbd "C-p") 'ac-previous)  ; C-p で前候補選択
-;; ファイルパスの補完
+;; ;; ファイルパスの補完
 (global-set-key [(alt tab)] 'ac-complete-filename)
 (setq ac-dwim t)  ; 空気読んでほしい
-;; 情報源として
-;; * ac-source-filename
-;; * ac-source-words-in-same-mode-buffers
-;; を利用
+;; ;; 情報源として
+;; ;; * ac-source-filename
+;; ;; * ac-source-words-in-same-mode-buffers
+;; ;; を利用
 (setq-default ac-sources '(ac-source-filename
                            ac-source-words-in-same-mode-buffers
                            ac-source-yasnippet))
-;; また、Emacs Lisp モードでは ac-source-symbols を追加で利用
+;; ;; また、Emacs Lisp モードでは ac-source-symbols を追加で利用
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (add-to-list 'ac-sources 'ac-source-symbols t)))
 (setq ac-auto-start 3);; 補完を開始する文字数
 
 
-;; 色
+;; ;; 色
 (set-face-background 'ac-completion-face "#333333")
 (set-face-foreground 'ac-candidate-face "black")
 (set-face-background 'ac-selection-face "#666666")
@@ -1388,6 +1396,11 @@ with regard to indentation."
 ;; company-mode の設定
 ;; ---------------------------------------------------------
 (require 'company)
+(global-company-mode) ; 全バッファで有効にする 
+(setq company-idle-delay 0) ; デフォルトは0.5
+(setq company-minimum-prefix-length 3) ; デフォルトは4
+(setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
+
 (set-face-attribute 'company-tooltip nil
                     :foreground "black" :background "lightgrey")
 (set-face-attribute 'company-tooltip-common nil
@@ -1409,6 +1422,8 @@ with regard to indentation."
 
 ;; C-s で絞り込む
 (define-key company-active-map (kbd "C-s") 'company-filter-candidates)
+
+(push 'company-lsp company-backends)
 
 
 ;; ---------------------------------------------------------
@@ -2359,7 +2374,7 @@ are always included."
     (require 'ess-R-object-popup)
     (define-key ess-mode-map "\C-c\C-g" 'ess-R-object-popup)
     ;; 補完機能を有効にする
-    (setq ess-use-auto-complete t)
+    ;; (setq ess-use-auto-complete t)
     ;; helm を使いたいので IDO は邪魔
     (setq ess-use-ido nil)
     ;; キャレットがシンボル上にある場合にもエコーエリアにヘルプを表示する
@@ -2375,7 +2390,7 @@ are always included."
     (lsp-register-client
     (make-lsp-client :new-connection
         (lsp-stdio-connection '("R" "--slave" "-e" "languageserver::run()"))
-        :major-modes '(ess-r-mode R-mode inferior-ess-r-mode)
+        :major-modes '(ess-mode R-mode inferior-ess-r-mode)
         :server-id 'lsp-R))
 
     (unless from-iess-p
@@ -3625,8 +3640,21 @@ Necessary due to interactions between polymode and yas snippet"
 ;; diff-hl の設定
 ;; ---------------------------------------------------------
 (require 'diff-hl)
-; バージョン管理下のコードをハイライト
+;; ; バージョン管理下のコードをハイライト
 (global-diff-hl-mode)
+;; (require 'git-gutter)
+;; (git-gutter:linum-setup)
+;; (custom-set-variables
+;;  '(git-gutter:modified-sign "~")
+;;  '(git-gutter:added-sign    "+")
+;;  '(git-gutter:deleted-sign  "-")
+;; )
+;; (set-face-background 'git-gutter:modified "#f1fa8c")
+;; (set-face-background 'git-gutter:added "#50fa7b")
+;; (set-face-background 'git-gutter:deleted "#ff79c6")
+
+;; (global-git-gutter-mode +1)
+
 
 
 ;; ---------------------------------------------------------
