@@ -1902,7 +1902,7 @@ with regard to indentation."
 ;; (setq helm-ag-base-command "grep -rin")
 ;; (setq helm-ag-base-command "csearch -n")
 ;; (setq helm-ag-base-command "pt --nocolor --nogroup")
-(setq helm-ag-base-command "rg --vimgrep --no-heading") ;; ripgrip を使用
+(setq helm-ag-base-command "~/.cargo/bin/rg --vimgrep --no-heading") ;; ripgrip を使用
 ;; 現在のシンボルをデフォルトのクエリにする
 (setq helm-ag-insert-at-point 'symbol)
 ;; C-cg はちょうどあいてる
@@ -2342,6 +2342,7 @@ are always included."
 (require 'ess-site)
 (require 'lsp-mode)
 (require 'lsp-ui)
+(add-hook 'lsp-mode-hook 'lsp-ui-mode)
 
 ;R 関連--------------------------------------------
 ;; パスの追加
@@ -2426,7 +2427,7 @@ are always included."
 
 ;; R-mode 起動直後の処理
 (add-hook 'R-mode-hook 'ess-load-hook)
-(add-hook 'R-mode-hook 'lsp-ui-mode)
+;; (add-hook 'R-mode-hook 'lsp-ui-mode)
 
 ;; R 起動直前の処理
 (defun ess-pre-run-hooks ()
@@ -2880,23 +2881,24 @@ Necessary due to interactions between polymode and yas snippet"
 (setq python-shell-interpreter "ipython3" python-shell-interpreter-args "--simple-prompt --pprint")
 
 
-(require 'jedi)
-(require 'epc)
-(add-hook 'python-mode-hook 'jedi:setup)
-(add-hook 'python-mode-hook 'jedi:ac-setup)
-(setq jedi:complete-on-dot t)
+;; (require 'jedi)
+;; (require 'epc)
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (add-hook 'python-mode-hook 'jedi:ac-setup)
+;; (setq jedi:complete-on-dot t)
 (require 'virtualenvwrapper)
 (require 'auto-virtualenvwrapper)
 (add-hook 'python-mode-hook #'auto-virtualenvwrapper-activate)
 
-(defun elpy-setting ()
- ;; (define-key jedi-mode-map (kbd "<C-tab>") nil) ;;C-tab はウィンドウの移動に用いる
- (company-mode -1)
- (auto-complete-mode -1)
- ;; (add-to-list 'ac-sources 'ac-source-jedi-direct)
- )
+;; (defun elpy-setting ()
+;;  ;; (define-key jedi-mode-map (kbd "<C-tab>") nil) ;;C-tab はウィンドウの移動に用いる
+;;  (company-mode -1)
+;;  (auto-complete-mode -1)
+;;  ;; (add-to-list 'ac-sources 'ac-source-jedi-direct)
+;;  )
 
-(add-hook 'python-mode-hook 'elpy-setting)
+;; (add-hook 'python-mode-hook 'elpy-setting)
+(add-hook 'python-mode-hook #'lsp)
 
 
 ;; ---------------------------------------------------------
