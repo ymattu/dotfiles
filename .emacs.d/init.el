@@ -318,6 +318,26 @@
 "))
 
 
+;; Dashboard--------------------------------------
+;; Set the title
+(when (eq system-type 'darwin)
+  (setq dashboard-banner-logo-title
+        (concat "GNU Emacs " emacs-version " kernel "
+                (car (split-string (shell-command-to-string "uname -r")))  " x86_64 Mac OS X "
+                (car(split-string (shell-command-to-string "sw_vers -productVersion") "-")))))
+(when (eq system-type 'gnu/linux)
+  (setq dashboard-banner-logo-title
+        (concat "GNU Emacs " emacs-version " kernel "
+                (car (split-string (shell-command-to-string "uname -r")))  " x86_64 Debian GNU/Linux "
+                (car (split-string (shell-command-to-string "cat /etc/debian_version") "_")))))
+
+;; Set the banner
+(setq dashboard-startup-banner "~/Dropbox/emacs_ikemen.png")
+(dashboard-setup-startup-hook)
+(setq dashboard-page-separator "\n\f\f\n")
+(setq dashboard-items '((recents  . 15)))
+
+
 ;;言語系------------------------------------------------
 ;; 日本語設定
 (set-locale-environment "utf-8")
@@ -1371,8 +1391,8 @@ with regard to indentation."
 (scroll-bar-mode 0)
 
 ;; yascroll
-(require 'yascroll)
-(global-yascroll-bar-mode 1)
+;; (require 'yascroll)
+;; (global-yascroll-bar-mode 1)
 
 
 ;; ---------------------------------------------------------
@@ -1692,16 +1712,16 @@ with regard to indentation."
 ;; ---------------------------------------------------------
 ;; smooth-scroll の設定
 ;; ---------------------------------------------------------
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 2))) ;; one line at a time
 
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+;; (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
 
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
-(require 'smooth-scroll)
-(smooth-scroll-mode t)
+;; (require 'smooth-scroll)
+;; (smooth-scroll-mode t)
 
 ;; 横方向のスクロール行数を変更する。
 (setq smooth-scroll/hscroll-step-size 4)
