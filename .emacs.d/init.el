@@ -613,6 +613,28 @@
 
 
 ;; ---------------------------------------------------------
+;; Common Lisp の設定
+;; ---------------------------------------------------------
+;; 拡張子関連
+(add-to-list 'auto-mode-alist '("\\.lsp$" . lisp-mode))
+(add-to-list 'auto-mode-alist '("\\.lisp$" . lisp-mode))
+(load (expand-file-name "~/.roswell/lisp/quicklisp/slime-helper.el"))
+;; (add-hook 'lisp-mode-hook 'slime-mode)
+;; (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
+;; SBCLをデフォルトのCommon Lisp処理系に設定
+(setq inferior-lisp-program "sbcl")
+;; ~/.emacs.d/slimeをload-pathに追加
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/slime"))
+;; SLIMEのロード
+(require 'slime)
+(require 'slime-autoloads)
+;; (load (expand-file-name "~/.roswell/helper.el"))
+(slime-setup '(slime-repl slime-fancy slime-banner))
+;; SLIMEからの入力をUTF-8に設定
+(setq slime-net-coding-system 'utf-8-unix)
+
+
+;; ---------------------------------------------------------
 ;; dired の設定
 ;; ---------------------------------------------------------
 (require 'dired-x)
@@ -1396,7 +1418,7 @@ with regard to indentation."
 ;; company-mode の設定
 ;; ---------------------------------------------------------
 (require 'company)
-(global-company-mode) ; 全バッファで有効にする 
+(global-company-mode 1) ; 全バッファで有効にする
 (setq company-idle-delay 0) ; デフォルトは0.5
 (setq company-minimum-prefix-length 3) ; デフォルトは4
 (setq company-selection-wrap-around t) ; 候補の一番下でさらに下に行こうとすると一番上に戻る
@@ -4003,4 +4025,3 @@ __END__
 ;; xonshrcの設定
 ;; ---------------------------------------------------------
 (add-to-list 'auto-mode-alist '(".xonshrc\\'" . python-mode))
-
