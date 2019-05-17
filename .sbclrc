@@ -1,0 +1,2 @@
+(load "~/.roswell/lisp/quicklisp/setup.lisp")
+;; (ql:add-to-init-file)
