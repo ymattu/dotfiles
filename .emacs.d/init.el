@@ -639,19 +639,54 @@
 (add-to-list 'auto-mode-alist '("\\.lsp$" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.lisp$" . lisp-mode))
 (load (expand-file-name "~/.roswell/lisp/quicklisp/slime-helper.el"))
-;; (add-hook 'lisp-mode-hook 'slime-mode)
-;; (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 ;; SBCLをデフォルトのCommon Lisp処理系に設定
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
-;; ~/.emacs.d/slimeをload-pathに追加
-;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/slime"))
 ;; SLIMEのロード
 (require 'slime)
 (require 'slime-autoloads)
-;; (load (expand-file-name "~/.roswell/helper.el"))
 (slime-setup '(slime-repl slime-fancy slime-banner))
 ;; SLIMEからの入力をUTF-8に設定
 (setq slime-net-coding-system 'utf-8-unix)
+
+(eval-after-load "slime"
+   '(slime-setup '(slime-fancy slime-banner)))
+(global-set-key "\C-cs" 'slime-selector)
+
+;; M-x my-slime: 分割したウィンドウでslime起動
+;; C-c C-r: 選択範囲をslime-replへ送って評価
+(defun my-slime (&optional command coding-system)
+  "Run slime and split window."
+  (interactive)
+  (if (< (count-windows) 2)
+      (split-window-vertically)
+  )
+  (slime command coding-system)
+  (other-window 1)
+  )
+(defun slime-repl-send-region (start end)
+  "Send region to slime-repl."
+  (interactive "r")
+  (let ((buf-name (buffer-name (current-buffer)))
+        (sbcl-buf (get-buffer "*slime-repl sbcl*")))
+    (cond (sbcl-buf 
+           (copy-region-as-kill start end)
+           (switch-to-buffer-other-window sbcl-buf)
+           (yank)
+           (slime-repl-send-input "\n")
+           (switch-to-buffer-other-window buf-name))
+          (t (message "Not exist *slime-repl sbcl* buffer!")))
+    ))
+(global-set-key "\C-c\C-r" 'slime-repl-send-region)
+
+;; LISPモードで新しくファイルを開いたらウィンドウが上下に分割して下にREPL
+(add-hook 'lisp-mode-hook
+           (lambda ()
+             (global-set-key "\C-cH" 'hyperspec-lookup)
+             (cond ((not (featurep 'slime))
+                    (require 'slime)
+                    (normal-mode)))
+             (my-slime)))
+
 
 
 ;; ---------------------------------------------------------
