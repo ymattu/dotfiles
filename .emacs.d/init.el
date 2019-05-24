@@ -635,21 +635,16 @@
 ;; ---------------------------------------------------------
 ;; Common Lisp の設定
 ;; ---------------------------------------------------------
+(require 'slime)
 ;; 拡張子関連
 (add-to-list 'auto-mode-alist '("\\.lsp$" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.lisp$" . lisp-mode))
-(load (expand-file-name "~/.roswell/lisp/quicklisp/slime-helper.el"))
-;; SBCLをデフォルトのCommon Lisp処理系に設定
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
-;; SLIMEのロード
-(require 'slime)
-(require 'slime-autoloads)
-(slime-setup '(slime-repl slime-fancy slime-banner))
+(exec-path-from-shell-initialize)
+(load (expand-file-name "~/.roswell/helper.el"))
+
 ;; SLIMEからの入力をUTF-8に設定
 (setq slime-net-coding-system 'utf-8-unix)
 
-(eval-after-load "slime"
-   '(slime-setup '(slime-fancy slime-banner)))
 (global-set-key "\C-cs" 'slime-selector)
 
 ;; M-x my-slime: 分割したウィンドウでslime起動
@@ -668,7 +663,7 @@
   (interactive "r")
   (let ((buf-name (buffer-name (current-buffer)))
         (sbcl-buf (get-buffer "*slime-repl sbcl*")))
-    (cond (sbcl-buf 
+    (cond (sbcl-buf
            (copy-region-as-kill start end)
            (switch-to-buffer-other-window sbcl-buf)
            (yank)
