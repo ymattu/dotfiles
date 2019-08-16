@@ -1,16 +1,0 @@
-;; Emacs-W3 HTTP cookies file
-;; Automatically generated file!!! DO NOT EDIT!!!
-
-(setq url-cookie-storage
- '(("hatena.ne.jp"
-  [url-cookie "b" "$1$P8SxV8HW$mJuE1OugxxqQENQG7ozj30" "22-Mar-2037 14:01:31.00 GMT" "/" "hatena.ne.jp" nil])
- ("n249.network-auth.com"
-  [url-cookie "p_splash_session" "MO_w53_TKsswTe4_iW3X65AxAKxZlvvtQf2bk__dEd9JWJVRjFp1p5argKOu_XaqyoxVwbm7mketbjIlBgSYSMuGUx-pAFItkDsGWlSF1DqKZLVzO5pFQooG3QwzS3NqspvXrJysTXalM7vwUa6_HQcr4w-mp6jZxtIIwzEeL8ljY79ql_VtTVprh6KjYeVrl0MgaDeicbca3xJJgEhuUcrc-W3oIdfi2bayhMBPrxQj9r-uhFcyb6urg8MPTIVnStpdq7Ic4Ax-bqufE8oR8umMf8AiCHLJPN7rdIFxuvfTCy-auMNq8epWcVaR2gml6v3DrhkpObnCG8kTsbKrc-ai6kaasGIuG9E7TkPojpyuWxnRci6yxgi4XLeg-1rB7InON7VMOQ10Ej6LP7qOwS63l10IS-gqiIHzx8zbiXF8r43mpbIM6dye5sJulecN6vrkoupaYB8bfiMrpGWhXNCDFZN6GPB4P1yCOreCxg1q6Gbi4E3a9gnJyNLqocvqB_RyytW494V550c9LwB1fZgc2ErdNvOl5eA6-AqlXwDTqo2dZhfKi81zDf_AVNKN4F6CB74pI-AxF4cWFvpjfPVIPhBs5Rd3D0W20B4s5j0hX1ag" "Tue, 20-Nov-2018 08:45:26 GMT" "/" "n249.network-auth.com" nil]))
-)
-(setq url-cookie-secure-storage
- 'nil)
-
-;; Local Variables:
-;; version-control: never
-;; no-byte-compile: t
-;; End:

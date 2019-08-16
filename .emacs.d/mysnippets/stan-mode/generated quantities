@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: generated quantities
-# key: gen
-# --
-generated quantities {
-  $1
-}

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: filename
-# key: filename
-# --
-filename $1 '$2';

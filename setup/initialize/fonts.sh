@@ -13,7 +13,7 @@ readonly DIR_FONT="${HOME}/temp/font"
 download_fonts() {
     print_title "Fonts"
     print_message "Downloading fonts..."
-    wget -i $DOTFILES_PATH/setup/install/fonts.txt
+    wget -i $DOTFILES_PATH/setup/initialize/fonts.txt
     print_success "Fonts: succrssfully dowloaded"
 }
 

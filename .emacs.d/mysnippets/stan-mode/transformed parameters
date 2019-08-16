@@ -1,6 +1,0 @@
-# key: tr
-# name: transformed parameters
-# --
-transformed parameters {
-  $1
-}
