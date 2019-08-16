@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: rcpp_tag
+# key: rcpp
+# --
+#include<Rcpp.h>
+using namespace Rcpp;
+
+// [[Rcpp::plugins("cpp11")]]
+// [[Rcpp::export]]
+
+NumericVector timesTwo(NumericVector x) {
+  return x * 2;
+}
