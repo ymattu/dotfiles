@@ -9,14 +9,6 @@ $DIR_HIST_PATH = "~/.dirhist"
 $PATH.append("/usr/local/bin")
 $PATH.append("/usr/local/texlive/2017/bin/x86_64-darwin")
 
-
-"""
-基本設定
-"""
-# vi風の操作がシェル上で直感的でないのでFalse
-$VI_MODE = False
-# 補完をEnterで直接実行しない
-$COMPLETIONS_CONFIRM = True
 # Ctrl + D で終了しない
 $IGNOREEOF = True
 # カラーテーマ
@@ -44,16 +36,16 @@ $UPDATE_COMPLETIONS_ON_KEYPRESS = True
 
 
 #######powerline######
-xontrib load powerline
+xontrib load powerline2
 
 $PL_PARTS = 10
 $PL_DEFAULT_PROMPT = 'short_cwd>rtns'
 $PL_DEFAULT_RPROMPT = 'history>time'
-$PL_DEFAULT_TOOLBAR = 'who>cwd>branch>virtualenv>full_proc'
+$PL_DEFAULT_TOOLBAR = 'who>cwd>branch>virtualenv'
 
 $PL_PROMPT = "ymdhms>short_cwd"
 $PL_RPROMPT = "!"
-$PL_TOOLBAR = "who>cwd>branch>virtualenv>full_proc"
+$PL_TOOLBAR = "who>cwd>branch>virtualenv"
 
 
 # lsコマンドの結果の見た目
@@ -79,6 +71,8 @@ aliases["fish"] = "/usr/local/bin/fish"
 aliases["julia"] = "/Applications/Julia-1.0.app/Contents/Resources/julia/bin/julia"
 aliases["juliaold"] = "/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia"
 aliases["juno"] = "open -a Juno"
+# aliases["docker"] = "podman"
+
 
 import json
 from collections import OrderedDict
